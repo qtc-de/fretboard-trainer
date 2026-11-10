@@ -1,0 +1,24 @@
+fretboardtrainer:
+  name: Open Chord Shapes
+  description: Custom shapes via explicit positions — "string:fret", string 1 = high e. Tap every fretted note and every open string that rings.
+  ordered: false
+  instrument: guitar
+  exercises:
+    - name: C major (open)
+      description: Show me the open C chord — five strings ring, the low E doesn't.
+      positions: ["5:3", "4:2", "3:0", "2:1", "1:0"]
+    - name: A major (open)
+      positions: ["5:0", "4:2", "3:2", "2:2", "1:0"]
+    - name: G major (open)
+      positions: ["6:3", "5:2", "4:0", "3:0", "2:0", "1:3"]
+    - name: E major (open)
+      positions: ["6:0", "5:2", "4:2", "3:1", "2:0", "1:0"]
+    - name: D major (open)
+      description: Four strings — D, G, B and high e.
+      positions: ["4:0", "3:2", "2:3", "1:2"]
+    - name: A minor (open)
+      positions: ["5:0", "4:2", "3:2", "2:1", "1:0"]
+    - name: E minor (open)
+      positions: ["6:0", "5:2", "4:2", "3:0", "2:0", "1:0"]
+    - name: D minor (open)
+      positions: ["4:0", "3:2", "2:3", "1:1"]

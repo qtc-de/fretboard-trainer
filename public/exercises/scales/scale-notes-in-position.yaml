@@ -1,0 +1,41 @@
+fretboardtrainer:
+  name: Scale Notes in a Position
+  description: No shape memorised? Build it from the notes — find every scale note inside a fret window.
+  ordered: true
+  exercises:
+    - name: C major in open position
+      description: Tap every note of the C major scale (C D E F G A B) in frets 0-3.
+      root: C
+      scale: major
+      fretboard:
+        start: 0
+        end: 3
+    - name: A minor pentatonic at fret 5
+      description: Every A, C, D, E and G between fret 5 and 8.
+      root: A
+      scale: minor-pentatonic
+      fretboard:
+        start: 5
+        end: 8
+    - name: E minor around fret 7
+      description: The E natural minor scale (E F# G A B C D) in frets 7-10.
+      root: E
+      scale: minor
+      fretboard:
+        start: 7
+        end: 10
+    - name: A blues scale at fret 5
+      description: Minor pentatonic plus the "blue note" (Eb) — frets 5-8.
+      root: A
+      scale: blues
+      fretboard:
+        start: 5
+        end: 8
+    - name: "{{root}} major scale, frets 2-5"
+      description: A random key — every note of {{root}} major between fret 2 and 5.
+      root: random
+      scale: major
+      repeat: 3
+      fretboard:
+        start: 2
+        end: 5

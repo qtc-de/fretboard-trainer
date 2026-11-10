@@ -1,0 +1,29 @@
+fretboardtrainer:
+  name: G Major Pentatonic Shapes
+  ordered: true
+  exercises:
+    - name: "{{shape_ordinal}} shape — G major pentatonic"
+      description: Show me the {{shape_ordinal}} G major pentatonic shape.
+      root: G
+      scale: major-pentatonic
+      shape: 1
+    - name: "{{shape_ordinal}} shape — G major pentatonic"
+      description: Show me the {{shape_ordinal}} G major pentatonic shape.
+      root: G
+      scale: major-pentatonic
+      shape: 2
+    - name: "{{shape_ordinal}} shape — G major pentatonic"
+      description: Show me the {{shape_ordinal}} G major pentatonic shape.
+      root: G
+      scale: major-pentatonic
+      shape: 3
+    - name: "{{shape_ordinal}} shape — G major pentatonic"
+      description: Show me the {{shape_ordinal}} G major pentatonic shape.
+      root: G
+      scale: major-pentatonic
+      shape: 4
+    - name: "{{shape_ordinal}} shape — G major pentatonic"
+      description: Show me the {{shape_ordinal}} G major pentatonic shape.
+      root: G
+      scale: major-pentatonic
+      shape: 5

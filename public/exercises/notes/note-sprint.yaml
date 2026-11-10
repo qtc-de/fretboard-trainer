@@ -1,0 +1,23 @@
+fretboardtrainer:
+  name: Note Sprint
+  description: Speed drills — one random note at a time, tap any position of it.
+  ordered: true
+  exercises:
+    - name: Natural notes sprint
+      description: Tap 20 random natural notes anywhere on the neck. Three mistakes and you're out.
+      type: sequence
+      notes: [C, D, E, F, G, A, B]
+      success_on: 20
+      failure_on: 3
+    - name: Chromatic sprint
+      description: All 12 notes now. Tap 20 correct — three mistakes and you're out.
+      type: sequence
+      success_on: 20
+      failure_on: 3
+      randomNotes: 1
+    - name: One minute madness
+      description: As many notes as you can in 60 seconds. Five mistakes ends it early.
+      type: sequence
+      randomNotes: 1
+      failure_on: 5
+      time_limit: 60

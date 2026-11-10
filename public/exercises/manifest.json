@@ -1,0 +1,20 @@
+{
+  "files": [
+    "arpeggios/triad-tones.yaml",
+    "bass/bass-essentials.yaml",
+    "chords/barre-chords.yaml",
+    "chords/open-chords.yaml",
+    "notes/find-natural-notes.yaml",
+    "notes/find-sharps-and-flats.yaml",
+    "notes/name-that-note.yaml",
+    "notes/note-sprint.yaml",
+    "notes/notes-on-one-string.yaml",
+    "notes/octaves.yaml",
+    "notes/random-note-hunt.yaml",
+    "scales/a-minor-pentatonic-shapes.yaml",
+    "scales/g-major-3nps.yaml",
+    "scales/g-major-pentatonic-shapes.yaml",
+    "scales/pentatonic-shape-quiz.yaml",
+    "scales/scale-notes-in-position.yaml"
+  ]
+}

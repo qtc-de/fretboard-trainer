@@ -1,0 +1,15 @@
+fretboardtrainer:
+  name: Find the Sharps & Flats
+  description: The five accidentals. C# and Db are the same fret, so either spelling works.
+  ordered: true
+  exercises:
+    - name: Find every C♯ / D♭
+      notes: [C#]
+    - name: Find every D♯ / E♭
+      notes: [Eb]
+    - name: Find every F♯ / G♭
+      notes: [F#]
+    - name: Find every G♯ / A♭
+      notes: [Ab]
+    - name: Find every A♯ / B♭
+      notes: [Bb]

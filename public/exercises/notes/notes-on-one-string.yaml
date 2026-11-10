@@ -1,0 +1,49 @@
+fretboardtrainer:
+  name: One String at a Time
+  description: Learn the natural notes string by string (string 1 = highest).
+  ordered: true
+  exercises:
+    - name: Naturals on the lowest E string
+      description: Tap every natural note (no sharps/flats) on the low E string.
+      instrument: guitar
+      notes: [C, D, E, F, G, A, B]
+      fretboard:
+        strings: [6]
+        start: 0
+        end: 12
+    - name: Naturals on the A string
+      instrument: guitar
+      notes: [C, D, E, F, G, A, B]
+      fretboard:
+        strings: [5]
+        start: 0
+        end: 12
+    - name: Naturals on the D string
+      instrument: guitar
+      notes: [C, D, E, F, G, A, B]
+      fretboard:
+        strings: [4]
+        start: 0
+        end: 12
+    - name: Naturals on the G string
+      instrument: guitar
+      notes: [C, D, E, F, G, A, B]
+      fretboard:
+        strings: [3]
+        start: 0
+        end: 12
+    - name: Naturals on the B string
+      instrument: guitar
+      notes: [C, D, E, F, G, A, B]
+      fretboard:
+        strings: [2]
+        start: 0
+        end: 12
+    - name: Name the notes on the A string
+      description: Now name them — random positions on the A string only.
+      instrument: guitar
+      randomPositions: 10
+      fretboard:
+        strings: [5]
+        start: 0
+        end: 12

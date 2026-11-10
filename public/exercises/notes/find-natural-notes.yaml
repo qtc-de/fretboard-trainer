@@ -1,0 +1,23 @@
+fretboardtrainer:
+  name: Find the Natural Notes
+  description: Every natural note, one at a time, across the whole neck.
+  ordered: true
+  exercises:
+    - name: Find every C
+      description: Tap every C on the fretboard. Tip — the C on the A string (fret 3) and its octave two strings up, two frets over, are a great anchor.
+      notes: [C]
+    - name: Find every D
+      notes: [D]
+    - name: Find every E
+      description: The open low and high E strings are a gift — find the rest.
+      notes: [E]
+    - name: Find every F
+      description: F sits one fret above every E.
+      notes: [F]
+    - name: Find every G
+      notes: [G]
+    - name: Find every A
+      notes: [A]
+    - name: Find every B
+      description: B sits one fret below every C.
+      notes: [B]

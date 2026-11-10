@@ -1,0 +1,37 @@
+fretboardtrainer:
+  name: A Minor Pentatonic Shapes
+  description: The five pentatonic boxes. Shape 1 starts on the root (A) on the lowest string; each next shape starts on the next scale note.
+  ordered: true
+  exercises:
+    - name: "{{shape_ordinal}} shape — A minor pentatonic"
+      description: Show me the {{shape_ordinal}} A minor pentatonic shape — tap every note in it. Roots are marked once found.
+      root: A
+      scale: minor-pentatonic
+      shape: 1
+    - name: "{{shape_ordinal}} shape — A minor pentatonic"
+      description: Show me the {{shape_ordinal}} A minor pentatonic shape — tap every note in it. Roots are marked once found.
+      root: A
+      scale: minor-pentatonic
+      shape: 2
+    - name: "{{shape_ordinal}} shape — A minor pentatonic"
+      description: Show me the {{shape_ordinal}} A minor pentatonic shape — tap every note in it. Roots are marked once found.
+      root: A
+      scale: minor-pentatonic
+      shape: 3
+    - name: "{{shape_ordinal}} shape — A minor pentatonic"
+      description: Show me the {{shape_ordinal}} A minor pentatonic shape — tap every note in it. Roots are marked once found.
+      root: A
+      scale: minor-pentatonic
+      shape: 4
+    - name: "{{shape_ordinal}} shape — A minor pentatonic"
+      description: Show me the {{shape_ordinal}} A minor pentatonic shape — tap every note in it. Roots are marked once found.
+      root: A
+      scale: minor-pentatonic
+      shape: 5
+    - name: "Shape {{shape}} in order"
+      description: A random shape — tap it note by note from the lowest to the highest pitch, like you would play it.
+      root: A
+      scale: minor-pentatonic
+      shape: random
+      ordered: true
+      repeat: 3

@@ -1,0 +1,25 @@
+:root {
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #1a1006;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+button,
+select {
+  font-family: inherit;
+}

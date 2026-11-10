@@ -1,0 +1,30 @@
+fretboardtrainer:
+  name: Name That Note
+  description: The other way around — a position lights up, you name the note.
+  ordered: true
+  exercises:
+    - name: Open position (frets 0-4)
+      description: Name each highlighted note. On a keyboard, type the letter (Shift for sharp).
+      randomPositions: 10
+      fretboard:
+        start: 0
+        end: 4
+    - name: Frets 5-9
+      randomPositions: 10
+      fretboard:
+        start: 5
+        end: 9
+    - name: Frets 10-15
+      randomPositions: 10
+      fretboard:
+        start: 10
+        end: 15
+    - name: Whole neck — natural notes
+      description: Only natural notes this time, anywhere on the neck.
+      randomPositions: 12
+      notes: [C, D, E, F, G, A, B]
+    - name: Whole neck challenge
+      description: Get 25 right before you make 3 mistakes.
+      type: name
+      success_on: 25
+      failure_on: 3

@@ -1,0 +1,31 @@
+fretboardtrainer:
+  name: Bass Essentials
+  description: Fretboard drills on a 4-string bass, whatever instrument is selected in the settings.
+  ordered: true
+  instrument: bass
+  exercises:
+    - name: Find every E and A
+      description: The two lowest open strings — find every other place they live.
+      notes: [E, A]
+    - name: "Find every {{note}}"
+      randomNotes: 1
+      repeat: 4
+      fretboard:
+        start: 0
+        end: 12
+    - name: "{{shape_ordinal}} A minor pentatonic box"
+      description: Show me the {{shape_ordinal}} A minor pentatonic shape on bass.
+      root: A
+      scale: minor-pentatonic
+      shape: random
+      repeat: 3
+    - name: Name the notes (frets 0-7)
+      randomPositions: 12
+      fretboard:
+        start: 0
+        end: 7
+    - name: Root-fifth-octave
+      description: In order — C on the A string (fret 3), its fifth G, then the octave C.
+      type: sequence
+      ordered: true
+      notes: [C2, G2, C3]

@@ -1,0 +1,16 @@
+fretboardtrainer:
+  name: Octave Positions
+  description: Find one exact pitch — a trailing number pins the octave (low E string open = E2 on guitar).
+  ordered: true
+  instrument: guitar
+  exercises:
+    - name: Every A3
+      description: A3 is the A on the D string, fret 7. Where else does that exact pitch live?
+      notes: [A3]
+    - name: Every C4 (middle C)
+      description: Middle C — find every place to play the exact same pitch.
+      notes: [C4]
+    - name: Every E3
+      notes: [E3]
+    - name: Every G3
+      notes: [G3]

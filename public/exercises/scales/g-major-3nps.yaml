@@ -1,0 +1,40 @@
+fretboardtrainer:
+  name: G Major — 3 Notes per String
+  description: The seven three-notes-per-string shapes of the G major scale. Shape 1 starts on G on the lowest string.
+  ordered: true
+  exercises:
+    - name: "{{shape_ordinal}} shape — G major (3NPS)"
+      description: Tap all three notes on every string of the {{shape_ordinal}} shape.
+      root: G
+      scale: major
+      shape: 1
+    - name: "{{shape_ordinal}} shape — G major (3NPS)"
+      description: Tap all three notes on every string of the {{shape_ordinal}} shape.
+      root: G
+      scale: major
+      shape: 2
+    - name: "{{shape_ordinal}} shape — G major (3NPS)"
+      description: Tap all three notes on every string of the {{shape_ordinal}} shape.
+      root: G
+      scale: major
+      shape: 3
+    - name: "{{shape_ordinal}} shape — G major (3NPS)"
+      description: Tap all three notes on every string of the {{shape_ordinal}} shape.
+      root: G
+      scale: major
+      shape: 4
+    - name: "{{shape_ordinal}} shape — G major (3NPS)"
+      description: Tap all three notes on every string of the {{shape_ordinal}} shape.
+      root: G
+      scale: major
+      shape: 5
+    - name: "{{shape_ordinal}} shape — G major (3NPS)"
+      description: Tap all three notes on every string of the {{shape_ordinal}} shape.
+      root: G
+      scale: major
+      shape: 6
+    - name: "{{shape_ordinal}} shape — G major (3NPS)"
+      description: Tap all three notes on every string of the {{shape_ordinal}} shape.
+      root: G
+      scale: major
+      shape: 7

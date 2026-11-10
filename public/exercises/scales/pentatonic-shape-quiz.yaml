@@ -1,0 +1,24 @@
+fretboardtrainer:
+  name: Pentatonic Shape Quiz
+  description: Random key, random shape. Can you place any pentatonic box anywhere?
+  ordered: true
+  exercises:
+    - name: "{{root}} minor pentatonic, shape {{shape}}"
+      description: Show me the {{shape_ordinal}} {{root}} minor pentatonic shape.
+      root: random
+      scale: minor-pentatonic
+      shape: random
+      repeat: 5
+    - name: "{{root}} major pentatonic, shape {{shape}}"
+      description: Show me the {{shape_ordinal}} {{root}} major pentatonic shape. Shape 1 starts on the root on the lowest string.
+      root: random
+      scale: major-pentatonic
+      shape: random
+      repeat: 5
+    - name: "{{root}} minor pentatonic, shape {{shape}} — no mistakes"
+      description: One wrong tap ends the round.
+      root: random
+      scale: minor-pentatonic
+      shape: random
+      failure_on: 1
+      repeat: 5

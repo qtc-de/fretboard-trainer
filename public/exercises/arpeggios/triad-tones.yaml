@@ -1,0 +1,38 @@
+fretboardtrainer:
+  name: Chord Tones
+  description: Find the notes of triads and seventh chords inside a fret window — the backbone of soloing over changes.
+  ordered: true
+  exercises:
+    - name: C major triad (C E G), frets 0-5
+      root: C
+      scale: major-triad
+      fretboard:
+        start: 0
+        end: 5
+    - name: A minor triad (A C E), frets 5-8
+      root: A
+      scale: minor-triad
+      fretboard:
+        start: 5
+        end: 8
+    - name: G7 (G B D F), frets 2-6
+      root: G
+      scale: dominant-7
+      fretboard:
+        start: 2
+        end: 6
+    - name: "{{root}} major triad, frets 3-7"
+      description: A random key — tap every root, third and fifth of {{root}} major.
+      root: random
+      scale: major-triad
+      repeat: 3
+      fretboard:
+        start: 3
+        end: 7
+    - name: "{{root}} minor 7, frets 5-9"
+      root: random
+      scale: minor-7
+      repeat: 2
+      fretboard:
+        start: 5
+        end: 9

@@ -1,0 +1,24 @@
+fretboardtrainer:
+  name: Random Note Hunt
+  description: A random note each round — find all of its positions.
+  ordered: true
+  exercises:
+    - name: "Find every {{note}} (frets 0-5)"
+      description: Open position first. Find every {{note}} between the nut and fret 5.
+      randomNotes: 1
+      repeat: 4
+      fretboard:
+        start: 0
+        end: 5
+    - name: "Find every {{note}} (frets 5-12)"
+      description: Middle of the neck. Find every {{note}} from fret 5 to 12.
+      randomNotes: 1
+      repeat: 4
+      fretboard:
+        start: 5
+        end: 12
+    - name: "Find every {{note}}"
+      description: Whole neck. Find every {{note}} — at most 3 mistakes.
+      randomNotes: 1
+      repeat: 4
+      failure_on: 3
