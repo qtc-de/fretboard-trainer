@@ -46,3 +46,10 @@ docker run --rm -p 8080:80 fretboard-trainer
 ```
 
 Open `http://localhost:8080`.
+
+
+### Disclaimer
+
+----
+
+This app was created using vibe-coding only.
