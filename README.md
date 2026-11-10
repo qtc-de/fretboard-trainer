@@ -9,9 +9,13 @@ the positions on a virtual neck. It is built for phones first: in portrait
 the neck stands upright so every fret is a large tap target, and a piano
 style keypad is docked at the bottom for "name that note" drills.
 
+<img width="1040" height="572" alt="image" src="https://github.com/user-attachments/assets/3ea8c5e7-8947-42fa-bc8c-f3478ecdf285" />
+
 Exercises are YAML files, in the same style as
 [BassBuddy](https://github.com/qtc-de/BassBuddy). You can load your own
 from disk.
+
+Try it out at: https://qtc-de.github.io/fretboard-trainer/
 
 
 ### Development
