@@ -1,0 +1,19 @@
+fretboardtrainer:
+  name: Bass Octave Positions
+  description: Find one exact pitch — a trailing number pins the octave (low E string open = E1 on bass).
+  ordered: true
+  instrument: bass
+  exercises:
+    - name: Every D2
+      description: D2 is the open D string. Where else does that exact pitch live?
+      notes: [D2]
+    - name: Every E2
+      description: One octave above the open low E — find every place to play it.
+      notes: [E2]
+    - name: Every G2
+      description: The open G string. This one lives on all four strings.
+      notes: [G2]
+    - name: Every A1
+      notes: [A1]
+    - name: Every C3
+      notes: [C3]

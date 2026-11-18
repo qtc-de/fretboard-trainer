@@ -50,16 +50,27 @@ function place(stringTrackValue, fretTrackValue) {
     : { gridRow: stringTrackValue, gridColumn: fretTrackValue };
 }
 
+// Frets get shorter towards the body like on a real neck: each fret is
+// 2^(-1/12) of the previous one. The open-string slot is not a real fret and
+// keeps a small fixed weight.
+function fretWeight(fret) {
+  return fret === 0 ? 0.75 : 2 ** (-(fret - 1) / 12);
+}
+
 const gridStyle = computed(() => {
   const S = stringCount.value;
-  const F = props.fretCount + 1;
   if (vertical.value) {
+    const rows = frets.value.map((fret) =>
+      fret === 0 ? 'var(--open-size)' : `max(var(--fret-min), calc(var(--fret-base) * ${fretWeight(fret).toFixed(4)}))`,
+    );
     return {
-      gridTemplateColumns: `var(--label-size) repeat(${S}, minmax(var(--cell-min), 1fr))`,
-      gridTemplateRows: `var(--header-size) repeat(${F}, var(--fret-size))`,
+      gridTemplateColumns: `var(--label-size) repeat(${S}, minmax(var(--cell-min), var(--string-col)))`,
+      gridTemplateRows: `var(--header-size) ${rows.join(' ')}`,
     };
   }
-  const fretCols = `repeat(${F}, minmax(var(--cell-min), 1fr))`;
+  const cols = frets.value.map((fret) => `minmax(var(--cell-min), ${fretWeight(fret).toFixed(4)}fr)`);
+  if (props.leftHanded) cols.reverse();
+  const fretCols = cols.join(' ');
   return {
     gridTemplateColumns: props.leftHanded ? `${fretCols} var(--label-size)` : `var(--label-size) ${fretCols}`,
     gridTemplateRows: `var(--header-size) repeat(${S}, var(--string-size))`,
@@ -145,7 +156,7 @@ watch(promptKey, async (key) => {
 </script>
 
 <template>
-  <div class="fretboard" :class="[orientation, { lefty: leftHanded }]">
+  <div class="fretboard" :class="[orientation, { lefty: leftHanded, 'long-scale': instrument.longScale }]">
     <div ref="boardRef" class="board" :style="gridStyle">
       <!-- Fret numbers -->
       <span
@@ -208,7 +219,6 @@ watch(promptKey, async (key) => {
   --header-size: 1.4rem;
   --cell-min: 2.6rem;
   --string-size: 2.6rem;
-  --fret-size: 2.9rem;
   --dot-size: 1.8rem;
 
   margin: 1rem auto 0;
@@ -220,11 +230,25 @@ watch(promptKey, async (key) => {
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Vertical: the neck is only as wide as its strings need (so a 4-string
+   bass is a narrow neck, not stretched over the screen), and the first fret
+   is taller than wide, tapering down to --fret-min. */
 .fretboard.vertical {
   --label-size: 1.75rem;
   --cell-min: 2.6rem;
-  max-width: 28rem;
+  --string-col: 3.6rem;
+  --open-size: 2.6rem;
+  --fret-base: 4.2rem;
+  --fret-min: 2.9rem;
+  width: fit-content;
+  max-width: 100%;
   padding: 0.5rem 0.5rem 0.75rem 0.25rem;
+}
+
+.fretboard.vertical.long-scale {
+  --string-col: 4rem;
+  --fret-base: 5.6rem;
+  --fret-min: 3.2rem;
 }
 
 .board {

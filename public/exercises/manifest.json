@@ -2,6 +2,8 @@
   "files": [
     "arpeggios/triad-tones.yaml",
     "bass/bass-essentials.yaml",
+    "bass/octaves.yaml",
+    "bass/one-string.yaml",
     "chords/barre-chords.yaml",
     "chords/open-chords.yaml",
     "notes/find-natural-notes.yaml",

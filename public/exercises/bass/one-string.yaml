@@ -1,0 +1,45 @@
+fretboardtrainer:
+  name: Bass One String at a Time
+  description: Learn the natural notes string by string (string 1 = G, string 4 = low E).
+  ordered: true
+  instrument: bass
+  exercises:
+    - name: Naturals on the E string
+      description: Tap every natural note (no sharps/flats) on the low E string.
+      notes: [C, D, E, F, G, A, B]
+      fretboard:
+        strings: [4]
+        start: 0
+        end: 12
+    - name: Naturals on the A string
+      notes: [C, D, E, F, G, A, B]
+      fretboard:
+        strings: [3]
+        start: 0
+        end: 12
+    - name: Naturals on the D string
+      notes: [C, D, E, F, G, A, B]
+      fretboard:
+        strings: [2]
+        start: 0
+        end: 12
+    - name: Naturals on the G string
+      notes: [C, D, E, F, G, A, B]
+      fretboard:
+        strings: [1]
+        start: 0
+        end: 12
+    - name: Name the notes on the E string
+      description: Now name them — random positions on the low E string only.
+      randomPositions: 10
+      fretboard:
+        strings: [4]
+        start: 0
+        end: 12
+    - name: Name the notes on the A string
+      description: Random positions on the A string only.
+      randomPositions: 10
+      fretboard:
+        strings: [3]
+        start: 0
+        end: 12
