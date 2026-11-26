@@ -50,6 +50,38 @@ describe('shape exercises', () => {
   });
 });
 
+describe('degrees exercises', () => {
+  const amp1 = '    - root: A\n      scale: minor-pentatonic\n      shape: 1\n';
+
+  it('targets the roots inside the shown shape only', () => {
+    const inst = buildInstance(parseOne(`${amp1}      degrees: [1]`), neck);
+    expect(inst.kind).toBe('degrees');
+    expect(inst.shapeCells.size).toBe(12);
+    expect([...inst.targets.keys()].sort()).toEqual(['0-5', '2-7', '5-5']);
+    expect(inst.degreeOf.get('1-7')).toBe('5');
+    expect(inst.window.cells.has('0-5')).toBe(true);
+    expect(inst.window.cells.has('0-6')).toBe(false);
+  });
+
+  it('combines degrees and resolves plain numbers against the scale', () => {
+    const inst = buildInstance(parseOne(`${amp1}      degrees: [5, 3]`), neck);
+    // E (5th) and C (the ♭3 of a minor scale)
+    expect([...inst.targets.keys()].sort()).toEqual(['0-8', '1-7', '3-5', '4-5', '5-8']);
+    expect(inst.degreeNames).toEqual(['5th', '♭3']);
+  });
+
+  it('rejects degrees the scale does not contain', () => {
+    expect(() => parseOne(`${amp1}      degrees: [2]`)).toThrow(/no degree "2"/);
+    expect(() => parseOne('    - root: A\n      scale: minor-pentatonic\n      degrees: [1]')).toThrow(/shape/);
+  });
+
+  it('fills the degree placeholder for random degrees', () => {
+    const inst = buildInstance(parseOne(`${amp1}      degrees: random\n      name: "Find the {{degree}}s"`), neck);
+    expect(inst.name).toBe(`Find the ${inst.degreeNames[0]}s`);
+    expect(inst.targets.size).toBeGreaterThan(0);
+  });
+});
+
 describe('validation', () => {
   it('rejects unknown scales and missing roots', () => {
     expect(() => parseOne('    - scale: lydian-dominant\n      root: C')).toThrow(/unknown scale/);

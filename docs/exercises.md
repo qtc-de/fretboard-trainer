@@ -49,8 +49,9 @@ fretboardtrainer:
 ### Exercise types
 
 `type` selects what the player does. When you leave it out, it is
-inferred: `shape` if the exercise has `shape` or `positions`, `name` if it
-has `randomPositions`, and `find` otherwise. A `name` exercise that uses
+inferred: `degrees` if the exercise has `degrees`, `shape` if it has
+`shape` or `positions`, `name` if it has `randomPositions`, and `find`
+otherwise. A `name` exercise that uses
 `positions` needs an explicit `type: name`.
 
 | type       | the player…                                                 | needs                                                    |
@@ -59,6 +60,7 @@ has `randomPositions`, and `find` otherwise. A `name` exercise that uses
 | `shape`    | taps every note of a scale shape / custom shape             | `root` + `scale` + `shape`, or `positions`               |
 | `sequence` | taps **one** position of each note, one note after another  | `notes`, `randomNotes`, or `root` + `scale`              |
 | `name`     | sees a highlighted position and picks its note on a keypad  | nothing (random positions); optional `positions`/`notes` |
+| `degrees`  | sees a scale shape and taps every root / 5th / ... in it    | `root` + `scale` + `shape` + `degrees`                   |
 
 ```yaml
     # find: all Cs and Gs between fret 0 and 5
@@ -102,6 +104,21 @@ has `randomPositions`, and `find` otherwise. A `name` exercise that uses
       success_on: 20
       failure_on: 3
 
+    # degrees: the 3rd A minor pentatonic shape is shown, tap its roots
+    - name: Roots in shape 3
+      root: A
+      scale: minor-pentatonic
+      shape: 3
+      degrees: [1]
+
+    # degrees: random key, shape and degree each time
+    - name: "Find the {{degree}}s — {{root}} minor pentatonic, shape {{shape}}"
+      root: random
+      scale: minor-pentatonic
+      shape: random
+      degrees: random
+      repeat: 5
+
     # name: identify 10 random positions in frets 0-4
     - name: Name the notes
       randomPositions: 10
@@ -117,10 +134,11 @@ has `randomPositions`, and `find` otherwise. A `name` exercise that uses
 | `type`             | all              | `find`, `shape`, `sequence` or `name` (see above). |
 | `notes`            | find, sequence, name | Note list. `C#` and `Db` are both fine (`♯`/`♭` also work). A trailing octave pins one exact pitch, e.g. `E2` = low E string open on guitar, `C4` = middle C. For `name`, it limits the asked positions to these notes. |
 | `randomNotes: N`   | find, sequence   | Draws `N` random notes each attempt, from `notes`, the scale, or all 12 notes. |
-| `root`             | find, shape, sequence, name | Root note for `scale`, or `random`. |
-| `scale`            | find, shape, sequence, name | One of the scales below. |
-| `shape`            | shape            | Shape number (1 = starts on the root on the lowest string), or `random`. |
-| `notes_per_string` | shape            | Overrides the shape system: 2 for pentatonics and 3 for seven-note scales by default. |
+| `root`             | find, shape, sequence, name, degrees | Root note for `scale`, or `random`. |
+| `scale`            | find, shape, sequence, name, degrees | One of the scales below. |
+| `shape`            | shape, degrees   | Shape number (1 = starts on the root on the lowest string), or `random`. |
+| `notes_per_string` | shape, degrees   | Overrides the shape system: 2 for pentatonics and 3 for seven-note scales by default. |
+| `degrees`          | degrees          | Scale degrees to tap: `[1]` (or `root`), `[5]`, `[1, 3, 5]`, `[b3]`, `["#4"]`, ..., or `random` (one random degree of the scale per attempt). A plain number means that degree as it is in the scale: `3` is the ♭3 in minor scales and the major 3rd in major ones. Found dots and wrong taps are labelled with their degree (R, ♭3, 5, ...). |
 | `positions`        | shape, name      | Explicit positions, `"string:fret"` or `{ string: 6, fret: 5 }`. String 1 is the highest string. |
 | `randomPositions: N` | name           | Number of positions to ask (default 10). |
 | `ordered`          | shape, sequence, name | shape: tap from the lowest to the highest pitch (default `false`). sequence: always in order. name with `positions`: ask in the listed order. |
@@ -134,8 +152,9 @@ has `randomPositions`, and `find` otherwise. A `name` exercise that uses
 ### Placeholders
 
 `{{note}}` (first drawn note), `{{notes}}` (all of them), `{{root}}`,
-`{{scale}}` (e.g. "minor pentatonic"), `{{shape}}` (e.g. `3`) and
-`{{shape_ordinal}}` (e.g. `3rd`) are replaced with the actual values of the
+`{{scale}}` (e.g. "minor pentatonic"), `{{shape}}` (e.g. `3`),
+`{{shape_ordinal}}` (e.g. `3rd`), `{{degree}}` (first asked degree, e.g.
+"root" or "5th") and `{{degrees}}` (all of them) are replaced with the actual values of the
 current attempt. This lets random exercises say what to look for.
 
 ### Scales

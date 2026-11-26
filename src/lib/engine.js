@@ -1,4 +1,4 @@
-import { NOTE_NAMES, SCALES, noteMatches, ordinal, pcName, scalePcs, shapePlacements } from './theory.js';
+import { DEGREE_LABELS, DEGREE_NAMES, NOTE_NAMES, SCALES, noteMatches, ordinal, pcName, scalePcs, shapePlacements } from './theory.js';
 import { posKey } from './instruments.js';
 
 const CHROMATIC = NOTE_NAMES.map((name, pc) => ({ name, pc, octave: null }));
@@ -59,8 +59,13 @@ function resolveWindow(fretboard, stringCount) {
   return { frets: fretboard.frets, strings };
 }
 
+/** `cells` (a Set of position keys) further limits the window to exact positions. */
 export function inWindow(win, stringIndex, fret) {
-  return (win.frets == null || win.frets.has(fret)) && (win.strings == null || win.strings.has(stringIndex));
+  return (
+    (win.frets == null || win.frets.has(fret)) &&
+    (win.strings == null || win.strings.has(stringIndex)) &&
+    (win.cells == null || win.cells.has(posKey(stringIndex, fret)))
+  );
 }
 
 function fillPlaceholders(text, vars) {
@@ -75,10 +80,12 @@ function fillPlaceholders(text, vars) {
  * restart, so random exercises vary each time.
  *
  * Returned object (fields depend on `kind`):
- *   kind        'find' | 'shape' | 'sequence' | 'name'
+ *   kind        'find' | 'shape' | 'sequence' | 'name' | 'degrees'
  *   window      relevant neck area (see inWindow)
  *   rootPc      pitch class to mark as root on found dots, or null
- *   targets     find: Map<key, pos> of every position to tap
+ *   targets     find/degrees: Map<key, pos> of every position to tap
+ *   shapeCells  degrees: Map<key, pos> of the shown shape
+ *   degreeOf    degrees: key -> degree label (R, ♭3, 5, ...) for the shape's dots
  *   placements  shape: array of Map<key, pos> (same shape in each octave)
  *   order       shape (ordered): keys per placement in required order
  *   steps       sequence: [{ spec, label }]; name: [pos]
@@ -139,6 +146,46 @@ export function buildInstance(def, { tuning, fretCount }) {
     return finish({ ...base, notes: chosen, targets });
   }
 
+  // Draws the shape number (if random) and returns every octave placement.
+  const scaleShape = () => {
+    const shapeNum = def.shape === 'random' ? 1 + Math.floor(Math.random() * scaleInfo.intervals.length) : def.shape;
+    vars.shape = shapeNum;
+    vars.shape_ordinal = ordinal(shapeNum);
+    return shapePlacements(tuning, fretCount, rootPc, def.scale, shapeNum, def.notesPerString || scaleInfo.nps);
+  };
+  const shapeTooBig = `This shape doesn't fit within ${fretCount} frets — raise the fret count in the settings.`;
+
+  if (def.type === 'degrees') {
+    const placements = scaleShape();
+    if (!placements.length) return fail(shapeTooBig);
+    // Show one octave placement of the shape; the player marks degrees in it.
+    const placement = randomItem(placements);
+    const semis = def.degrees === 'random' ? [randomItem(scaleInfo.intervals)] : def.degrees;
+    const wanted = new Set(semis);
+    const shapeCells = new Map();
+    const degreeOf = new Map();
+    const targets = new Map();
+    for (const p of placement) {
+      const key = posKey(p.stringIndex, p.fret);
+      const interval = (p.midi - rootPc + 120) % 12;
+      shapeCells.set(key, p);
+      degreeOf.set(key, DEGREE_LABELS[interval]);
+      if (wanted.has(interval)) targets.set(key, p);
+    }
+    const names = semis.map((x) => DEGREE_NAMES[x]);
+    if (!targets.size) return fail(`This shape has no ${names.join(' or ')} on this instrument.`);
+    vars.degree = names[0];
+    vars.degrees = names.join(', ');
+    return finish({
+      ...base,
+      window: { frets: null, strings: null, cells: new Set(shapeCells.keys()) },
+      degreeNames: names,
+      targets,
+      shapeCells,
+      degreeOf,
+    });
+  }
+
   if (def.type === 'shape') {
     let placements;
     if (def.positions) {
@@ -153,15 +200,8 @@ export function buildInstance(def, { tuning, fretCount }) {
       }
       placements = [positions];
     } else {
-      const shapeCount = scaleInfo.intervals.length;
-      const shapeNum = def.shape === 'random' ? 1 + Math.floor(Math.random() * shapeCount) : def.shape;
-      vars.shape = shapeNum;
-      vars.shape_ordinal = ordinal(shapeNum);
-      const nps = def.notesPerString || scaleInfo.nps;
-      placements = shapePlacements(tuning, fretCount, rootPc, def.scale, shapeNum, nps);
-      if (!placements.length) {
-        return fail(`This shape doesn't fit within ${fretCount} frets — raise the fret count in the settings.`);
-      }
+      placements = scaleShape();
+      if (!placements.length) return fail(shapeTooBig);
       // Lowest pitch first: that's how a shape is practised in order.
       placements = placements.map((pl) => [...pl].sort((a, b) => a.midi - b.midi || a.stringIndex - b.stringIndex));
     }

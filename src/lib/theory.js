@@ -149,3 +149,33 @@ export function ordinal(n) {
   const v = n % 100;
   return n + (s[(v - 20) % 10] || s[v] || s[0]);
 }
+
+/** Short dot labels for each interval above the root, in semitones. */
+export const DEGREE_LABELS = ['R', '♭2', '2', '♭3', '3', '4', '♭5', '5', '♭6', '6', '♭7', '7'];
+/** Longer names for task text ("Tap every 5th"). */
+export const DEGREE_NAMES = ['root', '♭2', '2nd', '♭3', '3rd', '4th', '♭5', '5th', '♭6', '6th', '♭7', '7th'];
+
+const DEGREE_BASE = [0, 2, 4, 5, 7, 9, 11];
+const DEGREE_RE = /^(b|♭|#|♯)?([1-7])(?:st|nd|rd|th)?$/;
+
+/**
+ * Resolves a scale degree like 1, 5, "b3", "#4" or "root" to its distance
+ * from the root in semitones, for the given scale. A plain number means
+ * that degree as it occurs in the scale, so `3` is the ♭3 in a minor scale
+ * and the major 3rd in a major one (`5` falls back to ♭5, `4` to ♯4).
+ * Returns null if the scale doesn't contain that degree.
+ */
+export function resolveDegree(raw, scaleId) {
+  const text = String(raw).trim().toLowerCase();
+  const m = text === 'root' || text === 'r' ? [null, null, '1'] : DEGREE_RE.exec(text);
+  if (!m) return null;
+  const degree = Number(m[2]);
+  const base = DEGREE_BASE[degree - 1];
+  const intervals = new Set(SCALES[scaleId].intervals);
+  if (m[1]) {
+    const semis = (base + (m[1] === 'b' || m[1] === '♭' ? -1 : 1) + 12) % 12;
+    return intervals.has(semis) ? semis : null;
+  }
+  const options = degree === 1 ? [0] : degree === 4 ? [5, 6] : [base, base - 1];
+  return options.find((s) => intervals.has(s)) ?? null;
+}

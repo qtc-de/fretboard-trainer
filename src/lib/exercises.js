@@ -1,5 +1,5 @@
 import { load as loadYaml } from 'js-yaml';
-import { parseNote, resolveScale, SCALES } from './theory.js';
+import { parseNote, resolveDegree, resolveScale, SCALES } from './theory.js';
 import { INSTRUMENTS } from './instruments.js';
 
 /** Virtual folder name shown for exercise sets imported from disk. */
@@ -7,7 +7,7 @@ export const UPLOADED_FOLDER = 'Uploaded Exercises';
 
 const UPLOADED_STORAGE_KEY = 'fretboardtrainer:uploadedExercises';
 
-export const EXERCISE_TYPES = ['find', 'shape', 'sequence', 'name'];
+export const EXERCISE_TYPES = ['find', 'shape', 'sequence', 'name', 'degrees'];
 
 function normalizeNote(raw, context) {
   const parsed = parseNote(raw);
@@ -109,8 +109,30 @@ function parseRoot(value, context) {
   return note.pc;
 }
 
+/**
+ * `degrees` for a degrees exercise: one degree or a list (1, 5, "b3",
+ * "root", ...), or `random` for one random degree of the scale per attempt.
+ * Returns semitones above the root, or 'random'.
+ */
+function parseDegrees(value, scale, context) {
+  if (value == null) throw new Error(`${context}: degrees needs "degrees" (e.g. [1] or [5], or random)`);
+  if (String(value).toLowerCase() === 'random') return 'random';
+  const list = Array.isArray(value) ? value : [value];
+  if (!list.length) throw new Error(`${context}: "degrees" must not be empty`);
+  return [
+    ...new Set(
+      list.map((d) => {
+        const semis = resolveDegree(d, scale);
+        if (semis == null) throw new Error(`${context}: the ${SCALES[scale].label} scale has no degree "${d}"`);
+        return semis;
+      }),
+    ),
+  ];
+}
+
 function inferType(raw) {
   if (raw.type != null) return raw.type;
+  if (raw.degrees != null) return 'degrees';
   if (raw.shape != null || raw.positions != null) return 'shape';
   if (pick(raw, 'randomPositions', 'random_positions') != null) return 'name';
   return 'find';
@@ -145,6 +167,7 @@ function parseExercise(raw, i, sourceName) {
   }
 
   const notesPerString = parsePositiveInt(pick(raw, 'notes_per_string', 'notesPerString'), context, 'notes_per_string');
+  let degrees = null;
 
   if (type === 'shape') {
     if (!positions) {
@@ -158,6 +181,15 @@ function parseExercise(raw, i, sourceName) {
         throw new Error(`${context}: "${scale}" only has ${SCALES[scale].intervals.length} shapes`);
       }
     }
+  } else if (type === 'degrees') {
+    if (!scale || shape == null) throw new Error(`${context}: degrees needs "root" + "scale" + "shape"`);
+    if (!notesPerString && !SCALES[scale].nps) {
+      throw new Error(`${context}: scale "${scale}" has no standard shapes — set "notes_per_string"`);
+    }
+    if (shape !== 'random' && shape > SCALES[scale].intervals.length) {
+      throw new Error(`${context}: "${scale}" only has ${SCALES[scale].intervals.length} shapes`);
+    }
+    degrees = parseDegrees(raw.degrees, scale, context);
   } else if (type === 'find' || type === 'sequence') {
     const hasPool = (notes && notes.length) || scale;
     if (!hasPool && !randomNotes) {
@@ -177,6 +209,7 @@ function parseExercise(raw, i, sourceName) {
     notesPerString,
     positions,
     randomPositions,
+    degrees,
     ordered: parseBoolean(raw.ordered, context, 'ordered', type === 'sequence'),
     successOn: parsePositiveInt(pick(raw, 'success_on', 'successOn'), context, 'success_on'),
     failureOn: parsePositiveInt(pick(raw, 'failure_on', 'failureOn'), context, 'failure_on'),

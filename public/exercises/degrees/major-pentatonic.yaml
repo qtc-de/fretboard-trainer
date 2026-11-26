@@ -1,0 +1,204 @@
+fretboardtrainer:
+  name: "Degrees — G major pentatonic"
+  description: "See each of the five G major pentatonic shapes and find its roots, 5ths, 3rds, 2nds and 6ths — shape by shape, then mixed, then in random keys."
+  ordered: true
+  exercises:
+    - name: "Shape 1: roots"
+      description: "Tap every root (G) in the 1st G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 1
+      degrees: [1]
+    - name: "Shape 2: roots"
+      description: "Tap every root (G) in the 2nd G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 2
+      degrees: [1]
+    - name: "Shape 3: roots"
+      description: "Tap every root (G) in the 3rd G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 3
+      degrees: [1]
+    - name: "Shape 4: roots"
+      description: "Tap every root (G) in the 4th G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 4
+      degrees: [1]
+    - name: "Shape 5: roots"
+      description: "Tap every root (G) in the 5th G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 5
+      degrees: [1]
+    - name: "Shape 1: 5ths"
+      description: "Tap every 5th (D) in the 1st G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 1
+      degrees: [5]
+    - name: "Shape 2: 5ths"
+      description: "Tap every 5th (D) in the 2nd G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 2
+      degrees: [5]
+    - name: "Shape 3: 5ths"
+      description: "Tap every 5th (D) in the 3rd G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 3
+      degrees: [5]
+    - name: "Shape 4: 5ths"
+      description: "Tap every 5th (D) in the 4th G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 4
+      degrees: [5]
+    - name: "Shape 5: 5ths"
+      description: "Tap every 5th (D) in the 5th G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 5
+      degrees: [5]
+    - name: "Shape 1: 3rds"
+      description: "Tap every 3rd (major 3rd) (B) in the 1st G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 1
+      degrees: [3]
+    - name: "Shape 2: 3rds"
+      description: "Tap every 3rd (major 3rd) (B) in the 2nd G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 2
+      degrees: [3]
+    - name: "Shape 3: 3rds"
+      description: "Tap every 3rd (major 3rd) (B) in the 3rd G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 3
+      degrees: [3]
+    - name: "Shape 4: 3rds"
+      description: "Tap every 3rd (major 3rd) (B) in the 4th G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 4
+      degrees: [3]
+    - name: "Shape 5: 3rds"
+      description: "Tap every 3rd (major 3rd) (B) in the 5th G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 5
+      degrees: [3]
+    - name: "Shape 1: 2nds"
+      description: "Tap every 2nd (A) in the 1st G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 1
+      degrees: [2]
+    - name: "Shape 2: 2nds"
+      description: "Tap every 2nd (A) in the 2nd G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 2
+      degrees: [2]
+    - name: "Shape 3: 2nds"
+      description: "Tap every 2nd (A) in the 3rd G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 3
+      degrees: [2]
+    - name: "Shape 4: 2nds"
+      description: "Tap every 2nd (A) in the 4th G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 4
+      degrees: [2]
+    - name: "Shape 5: 2nds"
+      description: "Tap every 2nd (A) in the 5th G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 5
+      degrees: [2]
+    - name: "Shape 1: 6ths"
+      description: "Tap every 6th (E) in the 1st G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 1
+      degrees: [6]
+    - name: "Shape 2: 6ths"
+      description: "Tap every 6th (E) in the 2nd G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 2
+      degrees: [6]
+    - name: "Shape 3: 6ths"
+      description: "Tap every 6th (E) in the 3rd G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 3
+      degrees: [6]
+    - name: "Shape 4: 6ths"
+      description: "Tap every 6th (E) in the 4th G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 4
+      degrees: [6]
+    - name: "Shape 5: 6ths"
+      description: "Tap every 6th (E) in the 5th G major pentatonic shape."
+      root: G
+      scale: major-pentatonic
+      shape: 5
+      degrees: [6]
+    - name: "Roots and 5ths — shape {{shape}}"
+      description: "Tap every root and 5th (G, D) in the {{shape_ordinal}} shape."
+      root: G
+      scale: major-pentatonic
+      shape: random
+      degrees: [1, 5]
+      repeat: 3
+    - name: "Major triad — shape {{shape}}"
+      description: "Tap the major triad: every root, 3rd and 5th (G, B, D) in the {{shape_ordinal}} shape."
+      root: G
+      scale: major-pentatonic
+      shape: random
+      degrees: [1, 3, 5]
+      repeat: 3
+    - name: "Root, 3rd and 6th — shape {{shape}}"
+      description: "Tap every root, 3rd and 6th (G, B, E) in the {{shape_ordinal}} shape."
+      root: G
+      scale: major-pentatonic
+      shape: random
+      degrees: [1, 3, 6]
+      repeat: 3
+    - name: "Find the {{degree}}s — shape {{shape}}"
+      description: "Random shape and degree in G major pentatonic. A wrong tap shows which degree you hit."
+      root: G
+      scale: major-pentatonic
+      shape: random
+      degrees: random
+      repeat: 8
+    - name: "Roots — {{root}} major pentatonic, shape {{shape}}"
+      description: "Random key: tap every root of the shape."
+      root: random
+      scale: major-pentatonic
+      shape: random
+      degrees: [1]
+      repeat: 4
+    - name: "Roots and 5ths — {{root}} major pentatonic, shape {{shape}}"
+      description: "Random key: tap every root and 5th."
+      root: random
+      scale: major-pentatonic
+      shape: random
+      degrees: [1, 5]
+      repeat: 3
+    - name: "Find the {{degree}}s — {{root}} major pentatonic, shape {{shape}}"
+      description: "Random key, shape and degree."
+      root: random
+      scale: major-pentatonic
+      shape: random
+      degrees: random
+      repeat: 8

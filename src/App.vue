@@ -109,6 +109,8 @@ const taskText = computed(() => {
       return 'Tap the note shown';
     case 'name':
       return 'Which note is highlighted?';
+    case 'degrees':
+      return `Tap every ${i.degreeNames.join(' and ')} in the shape`;
     default:
       return '';
   }
@@ -414,6 +416,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown));
       :revealed="exercises.revealed.value"
       :prompt="exercises.promptPosition.value"
       :free-marks="exercises.inExercise.value ? undefined : exercises.freeMarks.value"
+      :shape-cells="inst && !inst.error ? inst.shapeCells : null"
+      :labels="inst && !inst.error ? inst.degreeOf : null"
       :show-note-names="settings.showNoteNames"
       :show-all-notes="!exercises.inExercise.value && showAllNotes"
       @tap="exercises.handleTap"

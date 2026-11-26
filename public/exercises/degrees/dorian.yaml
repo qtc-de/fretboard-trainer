@@ -1,0 +1,355 @@
+fretboardtrainer:
+  name: "Degrees — D dorian"
+  description: "The seven 3-notes-per-string shapes of D dorian: find every degree shape by shape, the dorian 6th, chord tones and random keys."
+  ordered: true
+  exercises:
+    - name: "Shape 1: roots"
+      description: "Tap every root (D) in the 1st D dorian shape."
+      root: D
+      scale: dorian
+      shape: 1
+      degrees: [1]
+    - name: "Shape 2: roots"
+      description: "Tap every root (D) in the 2nd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 2
+      degrees: [1]
+    - name: "Shape 3: roots"
+      description: "Tap every root (D) in the 3rd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 3
+      degrees: [1]
+    - name: "Shape 4: roots"
+      description: "Tap every root (D) in the 4th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 4
+      degrees: [1]
+    - name: "Shape 5: roots"
+      description: "Tap every root (D) in the 5th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 5
+      degrees: [1]
+    - name: "Shape 6: roots"
+      description: "Tap every root (D) in the 6th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 6
+      degrees: [1]
+    - name: "Shape 7: roots"
+      description: "Tap every root (D) in the 7th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 7
+      degrees: [1]
+    - name: "Shape 1: 5ths"
+      description: "Tap every 5th (A) in the 1st D dorian shape."
+      root: D
+      scale: dorian
+      shape: 1
+      degrees: [5]
+    - name: "Shape 2: 5ths"
+      description: "Tap every 5th (A) in the 2nd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 2
+      degrees: [5]
+    - name: "Shape 3: 5ths"
+      description: "Tap every 5th (A) in the 3rd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 3
+      degrees: [5]
+    - name: "Shape 4: 5ths"
+      description: "Tap every 5th (A) in the 4th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 4
+      degrees: [5]
+    - name: "Shape 5: 5ths"
+      description: "Tap every 5th (A) in the 5th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 5
+      degrees: [5]
+    - name: "Shape 6: 5ths"
+      description: "Tap every 5th (A) in the 6th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 6
+      degrees: [5]
+    - name: "Shape 7: 5ths"
+      description: "Tap every 5th (A) in the 7th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 7
+      degrees: [5]
+    - name: "Shape 1: ♭3s"
+      description: "Tap every ♭3 (minor 3rd) (F) in the 1st D dorian shape."
+      root: D
+      scale: dorian
+      shape: 1
+      degrees: [b3]
+    - name: "Shape 2: ♭3s"
+      description: "Tap every ♭3 (minor 3rd) (F) in the 2nd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 2
+      degrees: [b3]
+    - name: "Shape 3: ♭3s"
+      description: "Tap every ♭3 (minor 3rd) (F) in the 3rd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 3
+      degrees: [b3]
+    - name: "Shape 4: ♭3s"
+      description: "Tap every ♭3 (minor 3rd) (F) in the 4th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 4
+      degrees: [b3]
+    - name: "Shape 5: ♭3s"
+      description: "Tap every ♭3 (minor 3rd) (F) in the 5th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 5
+      degrees: [b3]
+    - name: "Shape 6: ♭3s"
+      description: "Tap every ♭3 (minor 3rd) (F) in the 6th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 6
+      degrees: [b3]
+    - name: "Shape 7: ♭3s"
+      description: "Tap every ♭3 (minor 3rd) (F) in the 7th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 7
+      degrees: [b3]
+    - name: "Shape 1: ♭7s"
+      description: "Tap every ♭7 (C) in the 1st D dorian shape."
+      root: D
+      scale: dorian
+      shape: 1
+      degrees: [b7]
+    - name: "Shape 2: ♭7s"
+      description: "Tap every ♭7 (C) in the 2nd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 2
+      degrees: [b7]
+    - name: "Shape 3: ♭7s"
+      description: "Tap every ♭7 (C) in the 3rd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 3
+      degrees: [b7]
+    - name: "Shape 4: ♭7s"
+      description: "Tap every ♭7 (C) in the 4th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 4
+      degrees: [b7]
+    - name: "Shape 5: ♭7s"
+      description: "Tap every ♭7 (C) in the 5th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 5
+      degrees: [b7]
+    - name: "Shape 6: ♭7s"
+      description: "Tap every ♭7 (C) in the 6th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 6
+      degrees: [b7]
+    - name: "Shape 7: ♭7s"
+      description: "Tap every ♭7 (C) in the 7th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 7
+      degrees: [b7]
+    - name: "Shape 1: 6ths"
+      description: "Tap every 6th (B) in the 1st D dorian shape."
+      root: D
+      scale: dorian
+      shape: 1
+      degrees: [6]
+    - name: "Shape 2: 6ths"
+      description: "Tap every 6th (B) in the 2nd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 2
+      degrees: [6]
+    - name: "Shape 3: 6ths"
+      description: "Tap every 6th (B) in the 3rd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 3
+      degrees: [6]
+    - name: "Shape 4: 6ths"
+      description: "Tap every 6th (B) in the 4th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 4
+      degrees: [6]
+    - name: "Shape 5: 6ths"
+      description: "Tap every 6th (B) in the 5th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 5
+      degrees: [6]
+    - name: "Shape 6: 6ths"
+      description: "Tap every 6th (B) in the 6th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 6
+      degrees: [6]
+    - name: "Shape 7: 6ths"
+      description: "Tap every 6th (B) in the 7th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 7
+      degrees: [6]
+    - name: "Shape 1: 2nds"
+      description: "Tap every 2nd (E) in the 1st D dorian shape."
+      root: D
+      scale: dorian
+      shape: 1
+      degrees: [2]
+    - name: "Shape 2: 2nds"
+      description: "Tap every 2nd (E) in the 2nd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 2
+      degrees: [2]
+    - name: "Shape 3: 2nds"
+      description: "Tap every 2nd (E) in the 3rd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 3
+      degrees: [2]
+    - name: "Shape 4: 2nds"
+      description: "Tap every 2nd (E) in the 4th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 4
+      degrees: [2]
+    - name: "Shape 5: 2nds"
+      description: "Tap every 2nd (E) in the 5th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 5
+      degrees: [2]
+    - name: "Shape 6: 2nds"
+      description: "Tap every 2nd (E) in the 6th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 6
+      degrees: [2]
+    - name: "Shape 7: 2nds"
+      description: "Tap every 2nd (E) in the 7th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 7
+      degrees: [2]
+    - name: "Shape 1: 4ths"
+      description: "Tap every 4th (G) in the 1st D dorian shape."
+      root: D
+      scale: dorian
+      shape: 1
+      degrees: [4]
+    - name: "Shape 2: 4ths"
+      description: "Tap every 4th (G) in the 2nd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 2
+      degrees: [4]
+    - name: "Shape 3: 4ths"
+      description: "Tap every 4th (G) in the 3rd D dorian shape."
+      root: D
+      scale: dorian
+      shape: 3
+      degrees: [4]
+    - name: "Shape 4: 4ths"
+      description: "Tap every 4th (G) in the 4th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 4
+      degrees: [4]
+    - name: "Shape 5: 4ths"
+      description: "Tap every 4th (G) in the 5th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 5
+      degrees: [4]
+    - name: "Shape 6: 4ths"
+      description: "Tap every 4th (G) in the 6th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 6
+      degrees: [4]
+    - name: "Shape 7: 4ths"
+      description: "Tap every 4th (G) in the 7th D dorian shape."
+      root: D
+      scale: dorian
+      shape: 7
+      degrees: [4]
+    - name: "The 6th — what makes it dorian"
+      description: "The 6th (B) gives dorian its sound. Tap every one in the {{shape_ordinal}} shape."
+      root: D
+      scale: dorian
+      shape: random
+      degrees: [6]
+      repeat: 3
+    - name: "Roots and 5ths — shape {{shape}}"
+      description: "Tap every root and 5th (D, A) in the {{shape_ordinal}} shape."
+      root: D
+      scale: dorian
+      shape: random
+      degrees: [1, 5]
+      repeat: 3
+    - name: "Minor 7th chord — shape {{shape}}"
+      description: "Tap the m7 chord tones: root, ♭3, 5th and ♭7 (D, F, A, C) in the {{shape_ordinal}} shape."
+      root: D
+      scale: dorian
+      shape: random
+      degrees: [1, b3, 5, b7]
+      repeat: 3
+    - name: "Root, ♭3 and 6th — shape {{shape}}"
+      description: "Tap every root, ♭3 and the dorian 6th (D, F, B) in the {{shape_ordinal}} shape."
+      root: D
+      scale: dorian
+      shape: random
+      degrees: [1, b3, 6]
+      repeat: 3
+    - name: "Find the {{degree}}s — shape {{shape}}"
+      description: "Random shape and degree in D dorian. A wrong tap shows which degree you hit."
+      root: D
+      scale: dorian
+      shape: random
+      degrees: random
+      repeat: 8
+    - name: "Roots — {{root}} dorian, shape {{shape}}"
+      description: "Random key: tap every root of the shape."
+      root: random
+      scale: dorian
+      shape: random
+      degrees: [1]
+      repeat: 4
+    - name: "Roots and 5ths — {{root}} dorian, shape {{shape}}"
+      description: "Random key: tap every root and 5th."
+      root: random
+      scale: dorian
+      shape: random
+      degrees: [1, 5]
+      repeat: 3
+    - name: "Find the {{degree}}s — {{root}} dorian, shape {{shape}}"
+      description: "Random key, shape and degree."
+      root: random
+      scale: dorian
+      shape: random
+      degrees: random
+      repeat: 8

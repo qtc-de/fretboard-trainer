@@ -16,6 +16,8 @@ const props = defineProps({
   revealed: { type: Map, default: () => new Map() }, // missed positions shown after a failure
   prompt: { type: Object, default: null }, // { stringIndex, fret } to highlight with "?"
   freeMarks: { type: Set, default: () => new Set() },
+  shapeCells: { type: Map, default: null }, // positions of a shape to show as plain dots
+  labels: { type: Map, default: null }, // key -> label used instead of the note name (e.g. scale degrees)
   showNoteNames: { type: Boolean, default: true },
   showAllNotes: { type: Boolean, default: false },
 });
@@ -91,7 +93,11 @@ function inlayStyle(fret) {
 function isDimmed(stringIndex, fret) {
   const w = props.window;
   if (!w) return false;
-  return (w.frets != null && !w.frets.has(fret)) || (w.strings != null && !w.strings.has(stringIndex));
+  return (
+    (w.frets != null && !w.frets.has(fret)) ||
+    (w.strings != null && !w.strings.has(stringIndex)) ||
+    (w.cells != null && !w.cells.has(posKey(stringIndex, fret)))
+  );
 }
 
 function isFretDimmed(fret) {
@@ -116,14 +122,16 @@ const promptKey = computed(() => (props.prompt ? posKey(props.prompt.stringIndex
 function dotFor(string, fret) {
   const key = posKey(string.index, fret);
   const name = pcName(string.open + fret);
+  const label = props.labels?.get(key);
   if (key === promptKey.value) return { cls: 'prompt', label: '?' };
   const marker = markerMap.value.get(key);
   if (marker) return { cls: marker.type, label: marker.label, id: marker.id };
   if (props.found.has(key)) {
     const root = props.rootPc != null && (string.open + fret) % 12 === props.rootPc;
-    return { cls: root ? 'correct root' : 'correct', label: props.showNoteNames ? name : '' };
+    return { cls: root ? 'correct root' : 'correct', label: label ?? (props.showNoteNames ? name : '') };
   }
-  if (props.revealed.has(key)) return { cls: 'revealed', label: name };
+  if (props.revealed.has(key)) return { cls: 'revealed', label: label ?? name };
+  if (props.shapeCells?.has(key)) return { cls: 'shape', label: '' };
   if (props.freeMarks.has(key)) return { cls: 'free', label: name };
   if (props.showAllNotes) return { cls: 'ghost', label: name };
   return null;
@@ -461,6 +469,12 @@ watch(promptKey, async (key) => {
   font-size: 0.95rem;
   box-shadow: 0 0 0 3px rgba(255, 90, 60, 0.35), 0 0 16px rgba(255, 90, 60, 0.9);
   animation: prompt-pulse 1.4s ease-in-out infinite;
+}
+
+.note-dot.shape {
+  background: rgba(240, 217, 168, 0.85);
+  box-shadow: 0 0 0 2px rgba(26, 16, 6, 0.5);
+  animation: none;
 }
 
 .note-dot.ghost {

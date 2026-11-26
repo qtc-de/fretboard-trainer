@@ -189,7 +189,7 @@ export function useExercises(settings) {
     const inst = instance.value;
     const out = new Map();
     if (!inst || inst.error) return out;
-    if (inst.kind === 'find') {
+    if (inst.kind === 'find' || inst.kind === 'degrees') {
       for (const [key, p] of inst.targets) if (!found.value.has(key)) out.set(key, p);
     } else if (inst.kind === 'shape') {
       const placement = inst.placements[placementIndex.value ?? 0];
@@ -253,14 +253,15 @@ export function useExercises(settings) {
     if (!inWindow(inst.window, stringIndex, fret)) return;
     if (found.value.has(key) && inst.kind !== 'sequence') return; // already found — no penalty
 
-    if (inst.kind === 'find') {
+    if (inst.kind === 'find' || inst.kind === 'degrees') {
       if (inst.targets.has(key)) {
         found.value.add(key);
         correctCount.value++;
         vibrate(15);
         if (found.value.size === inst.targets.size) succeed();
       } else {
-        addMarker(key, 'wrong', pcName(midi));
+        // In a degrees exercise, show which degree was hit instead of the note.
+        addMarker(key, 'wrong', inst.degreeOf?.get(key) ?? pcName(midi));
         registerMistake();
       }
       return;
@@ -420,7 +421,7 @@ export function useExercises(settings) {
   const progress = computed(() => {
     const inst = instance.value;
     if (!inst || inst.error) return null;
-    if (inst.kind === 'find') return { done: found.value.size, total: inst.targets.size };
+    if (inst.kind === 'find' || inst.kind === 'degrees') return { done: found.value.size, total: inst.targets.size };
     if (inst.kind === 'shape') {
       const total = inst.placements[placementIndex.value ?? 0].size;
       return { done: found.value.size, total };
